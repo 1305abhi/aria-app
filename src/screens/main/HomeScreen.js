@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { FONTS, SPACING, RADIUS } from '../../constants/theme';
 import { useTheme } from '../../context/ThemeContext';
+import { SCREENS } from '../../constants/constants';
 
 const TIMELINE = [
   { time: '07:00', title: 'Morning workout', subtitle: '45 min - Health', color: '#00BFFF', completed: true },
@@ -11,11 +13,11 @@ const TIMELINE = [
   { time: '14:30', title: 'Team sync', subtitle: '30 min - Work', color: '#FF4D4D', completed: false },
 ];
 
-export default function HomeScreen() {
+export default function HomeScreen({ navigation }) {
   const { COLORS } = useTheme();
 
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: COLORS.background }]}>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: COLORS.background }]} edges={['top', 'left', 'right']}>
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
         
         {/* Header */}
@@ -25,8 +27,12 @@ export default function HomeScreen() {
             <Text style={[styles.name, { color: COLORS.textPrimary }]}>Alex</Text>
           </View>
           <View style={styles.headerIcons}>
-            <View style={[styles.iconCircle, { backgroundColor: COLORS.backgroundCard }]} />
-            <View style={[styles.profileCircle, { backgroundColor: COLORS.primary }]}><Text style={styles.profileText}>A</Text></View>
+            <TouchableOpacity 
+              style={[styles.profileCircle, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border, borderWidth: 1 }]}
+              onPress={() => navigation.navigate(SCREENS.NOTIFICATIONS)}
+            >
+              <Text style={[styles.profileText, { color: COLORS.textPrimary }]}>🔔</Text>
+            </TouchableOpacity>
           </View>
         </View>
 

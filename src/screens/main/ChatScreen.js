@@ -4,13 +4,14 @@
  */
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { COLORS, FONTS } from '../../constants/theme';
 
 export default function ChatScreen() {
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container} edges={['top', 'left', 'right']}>
       <Text style={styles.text}>Chat screen — build in Phase 3</Text>
-    </View>
+    </SafeAreaView>
   );
 }
 
