@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { FONTS, SPACING, RADIUS } from '../../constants/theme';
 import { useTheme } from '../../context/ThemeContext';
 import { SCREENS } from '../../constants/constants';
@@ -31,14 +32,17 @@ export default function HomeScreen({ navigation }) {
               style={[styles.profileCircle, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border, borderWidth: 1 }]}
               onPress={() => navigation.navigate(SCREENS.NOTIFICATIONS)}
             >
-              <Text style={[styles.profileText, { color: COLORS.textPrimary }]}>🔔</Text>
+              <Ionicons name="notifications-outline" size={20} color={COLORS.textPrimary} />
             </TouchableOpacity>
           </View>
         </View>
 
         {/* Aria Summary Card */}
         <View style={[styles.summaryCard, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border }]}>
-          <Text style={[styles.cardTag, { color: COLORS.primary }]}>✨ ARIA</Text>
+          <View style={styles.cardTagContainer}>
+            <Ionicons name="sparkles" size={12} color={COLORS.primary} style={{ marginRight: 4 }} />
+            <Text style={[styles.cardTag, { color: COLORS.primary }]}>ARIA</Text>
+          </View>
           <Text style={[styles.cardTitle, { color: COLORS.textPrimary }]}>
             Your day looks balanced. 4 tasks left, with 2 focus blocks held for you.
           </Text>
@@ -113,7 +117,8 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     marginBottom: SPACING.xl,
   },
-  cardTag: { fontSize: 12, fontWeight: 'bold', marginBottom: SPACING.sm, textTransform: 'uppercase' },
+  cardTagContainer: { flexDirection: 'row', alignItems: 'center', marginBottom: SPACING.sm },
+  cardTag: { fontSize: 12, fontWeight: 'bold', textTransform: 'uppercase' },
   cardTitle: { fontFamily: FONTS.serif, fontSize: 24, lineHeight: 30, marginBottom: SPACING.xl },
   cardLink: { flexDirection: 'row' },
   cardLinkText: { fontSize: 14 },

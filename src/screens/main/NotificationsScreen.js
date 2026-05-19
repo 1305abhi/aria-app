@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { FONTS, SPACING, RADIUS } from '../../constants/theme';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -13,7 +14,7 @@ const NOTIFICATIONS = [
     title: 'Quieter mornings',
     time: '2h ago',
     message: 'Your focus blocks land better when they start before 10. Want me to lock that pattern in?',
-    icon: '✨',
+    icon: 'sparkles',
     color: '#B388FF',
   },
   {
@@ -22,7 +23,7 @@ const NOTIFICATIONS = [
     title: 'Reading block missed',
     time: '9h ago',
     message: "You skipped last night's reading. Reschedule for tonight or skip the day?",
-    icon: '!',
+    icon: 'alert-circle',
     color: '#FF4D4D',
   },
   {
@@ -31,7 +32,7 @@ const NOTIFICATIONS = [
     title: 'Routine adapted',
     time: 'yesterday',
     message: "I noticed you prefer evening runs on rainy days. I'll switch automatically from now on.",
-    icon: '🪄',
+    icon: 'color-wand',
     color: '#00C48C',
   },
   {
@@ -40,7 +41,7 @@ const NOTIFICATIONS = [
     title: 'Add a buffer',
     time: 'yesterday',
     message: 'Your 14:30 sync often runs over. I can add a 10-min buffer after.',
-    icon: '✨',
+    icon: 'sparkles',
     color: '#B388FF',
   }
 ];
@@ -53,7 +54,7 @@ export default function NotificationsScreen({ navigation }) {
     <SafeAreaView style={[styles.safeArea, { backgroundColor: COLORS.background }]} edges={['top', 'left', 'right']}>
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={[styles.backBtn, { backgroundColor: COLORS.backgroundCard }]}>
-          <Text style={[styles.backIcon, { color: COLORS.textPrimary }]}>‹</Text>
+          <Ionicons name="chevron-back" size={24} color={COLORS.textPrimary} />
         </TouchableOpacity>
         <Text style={[styles.headerTitle, { color: COLORS.textPrimary }]}>Updates</Text>
       </View>
@@ -90,13 +91,13 @@ export default function NotificationsScreen({ navigation }) {
             <View style={styles.cardHeader}>
               <View style={styles.cardTitleRow}>
                 <View style={[styles.iconCircle, { backgroundColor: COLORS.background, borderColor: COLORS.border }]}>
-                  <Text style={[styles.icon, { color: notif.color }]}>{notif.icon}</Text>
+                  <Ionicons name={notif.icon} size={16} color={notif.color} />
                 </View>
                 <Text style={[styles.cardTitle, { color: COLORS.textPrimary }]}>{notif.title}</Text>
               </View>
               <View style={styles.cardTimeRow}>
                 <Text style={[styles.cardTime, { color: COLORS.textSecondary }]}>{notif.time}</Text>
-                <Text style={[styles.closeIcon, { color: COLORS.textSecondary }]}>✕</Text>
+                <Ionicons name="close" size={16} color={COLORS.textSecondary} />
               </View>
             </View>
 

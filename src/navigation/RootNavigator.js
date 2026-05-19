@@ -23,6 +23,10 @@ import { SCREENS }    from '../constants/constants';
 import AuthNavigator from './AuthNavigator';
 import MainNavigator from './MainNavigator';
 
+// ── Main App Screens (Outside Tabs) ──
+import NotificationsScreen from '../screens/main/NotificationsScreen';
+import GoalsScreen         from '../screens/main/GoalsScreen';
+
 const Stack = createNativeStackNavigator();
 
 export default function RootNavigator() {
@@ -41,8 +45,12 @@ export default function RootNavigator() {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{ headerShown: false }}>
         {user ? (
-          // ── Logged in → show main app tabs ──
-          <Stack.Screen name="Main" component={MainNavigator} />
+          // ── Logged in → show main app tabs and inner screens ──
+          <Stack.Group>
+            <Stack.Screen name="Main" component={MainNavigator} />
+            <Stack.Screen name={SCREENS.NOTIFICATIONS} component={NotificationsScreen} />
+            <Stack.Screen name="Goals" component={GoalsScreen} />
+          </Stack.Group>
         ) : (
           // ── Not logged in → show auth screens ──
           <Stack.Screen name="Auth" component={AuthNavigator} />
