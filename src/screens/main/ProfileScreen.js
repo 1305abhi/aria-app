@@ -1,15 +1,16 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Switch } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { Ionicons } from '@expo/vector-icons';
 import { FONTS, SPACING, RADIUS } from '../../constants/theme';
 import { useTheme } from '../../context/ThemeContext';
 
 const MENU_ITEMS = [
-  { title: 'Goals & routines', subtitle: 'Manage what Aria is shaping', icon: '✨' },
-  { title: 'Appearance', subtitle: 'Toggle Theme', icon: '🎨', isToggle: true },
-  { title: 'Notifications', subtitle: 'Adaptive', icon: '🔔' },
-  { title: 'Language', subtitle: 'English', icon: '🌐' },
-  { title: 'Connected apps', subtitle: '3 linked', icon: '🔌' },
+  { title: 'Goals & routines', subtitle: 'Manage what Aria is shaping', icon: 'sparkles' },
+  { title: 'Appearance', subtitle: 'Toggle Theme', icon: 'color-palette', isToggle: true },
+  { title: 'Notifications', subtitle: 'Adaptive', icon: 'notifications' },
+  { title: 'Language', subtitle: 'English', icon: 'globe' },
+  { title: 'Connected apps', subtitle: '3 linked', icon: 'link' },
 ];
 
 export default function ProfileScreen({ navigation }) {
@@ -18,7 +19,7 @@ export default function ProfileScreen({ navigation }) {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: COLORS.background }]} edges={['top', 'left', 'right']}>
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-        
+
         <Text style={[styles.headerTitle, { color: COLORS.textPrimary }]}>Profile</Text>
 
         <View style={[styles.profileCard, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border }]}>
@@ -33,7 +34,7 @@ export default function ProfileScreen({ navigation }) {
           </View>
 
           <View style={styles.statsRow}>
-            {[{v:'12d', l:'STREAK'}, {v:'3.5h', l:'FOCUS'}, {v:'3', l:'GOALS'}].map((stat, i) => (
+            {[{ v: '12d', l: 'STREAK' }, { v: '3.5h', l: 'FOCUS' }, { v: '3', l: 'GOALS' }].map((stat, i) => (
               <View key={i} style={[styles.statBox, { backgroundColor: COLORS.background }]}>
                 <Text style={[styles.statValue, { color: COLORS.textPrimary }]}>{stat.v}</Text>
                 <Text style={[styles.statLabel, { color: COLORS.textSecondary }]}>{stat.l}</Text>
@@ -51,14 +52,14 @@ export default function ProfileScreen({ navigation }) {
             };
 
             return (
-              <TouchableOpacity 
-                key={index} 
+              <TouchableOpacity
+                key={index}
                 style={[styles.menuItem, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border }]}
                 disabled={item.isToggle} // the toggle handles interaction
                 onPress={handlePress}
               >
                 <View style={[styles.menuIconContainer, { backgroundColor: COLORS.background }]}>
-                  <Text style={styles.menuIcon}>{item.icon}</Text>
+                  <Ionicons name={item.icon} size={18} color={COLORS.textPrimary} />
                 </View>
                 <View style={styles.menuTextContainer}>
                   <Text style={[styles.menuTitle, { color: COLORS.textPrimary }]}>{item.title}</Text>
@@ -66,15 +67,15 @@ export default function ProfileScreen({ navigation }) {
                     {item.isToggle ? (isDark ? 'Dark' : 'Light') : item.subtitle}
                   </Text>
                 </View>
-                
+
                 {item.isToggle ? (
-                  <Switch 
-                    value={isDark} 
+                  <Switch
+                    value={isDark}
                     onValueChange={toggleTheme}
                     trackColor={{ false: '#ccc', true: COLORS.primary }}
                   />
                 ) : (
-                  <Text style={[styles.chevron, { color: COLORS.textSecondary }]}>›</Text>
+                  <Ionicons name="chevron-forward" size={20} color={COLORS.textSecondary} />
                 )}
               </TouchableOpacity>
             );
@@ -82,7 +83,8 @@ export default function ProfileScreen({ navigation }) {
         </View>
 
         <TouchableOpacity style={[styles.signOutButton, { borderColor: COLORS.border }]}>
-          <Text style={[styles.signOutText, { color: COLORS.error }]}>[\u2192 Sign out</Text>
+          <Ionicons name="log-out-outline" size={20} color={COLORS.error} style={{ marginRight: 8 }} />
+          <Text style={[styles.signOutText, { color: COLORS.error }]}>Sign out</Text>
         </TouchableOpacity>
 
       </ScrollView>
@@ -118,7 +120,7 @@ const styles = StyleSheet.create({
   avatarText: { fontSize: 24, fontFamily: FONTS.serif, color: '#111' },
   name: { fontFamily: FONTS.serif, fontSize: 24, marginBottom: 4 },
   email: { fontSize: 14 },
-  
+
   statsRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
   menuTitle: { fontSize: 15, fontWeight: 'bold', marginBottom: 2 },
   menuSubtitle: { fontSize: 12 },
   chevron: { fontSize: 20 },
-  
+
   signOutButton: {
     padding: SPACING.base,
     borderRadius: RADIUS.pill,

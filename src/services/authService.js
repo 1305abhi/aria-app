@@ -1,10 +1,10 @@
 import { auth, db } from '../firebaseConfig';
-import { 
-  createUserWithEmailAndPassword, 
-  signInWithEmailAndPassword, 
-  signOut as fbSignOut, 
-  onAuthStateChanged, 
-  updateProfile 
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut as fbSignOut,
+  onAuthStateChanged,
+  updateProfile
 } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import { TABLES } from '../constants/constants';

@@ -8,7 +8,7 @@ export function ThemeProvider({ children }) {
   const [isDark, setIsDark] = useState(false);
 
   const toggleTheme = () => setIsDark(!isDark);
-  
+
   const COLORS = isDark ? darkTheme : lightTheme;
 
   return (

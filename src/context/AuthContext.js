@@ -15,8 +15,8 @@ import { getSession, onAuthStateChange } from '../services/authService';
 
 // ─── Create Context ───────────────────────────
 const AuthContext = createContext({
-  user:      null,
-  session:   null,
+  user: null,
+  session: null,
   isLoading: true,
 });
 
@@ -27,8 +27,8 @@ const AuthContext = createContext({
  * It checks for an existing session on mount, then listens for changes.
  */
 export function AuthProvider({ children }) {
-  const [user,      setUser]      = useState(null);
-  const [session,   setSession]   = useState(null);
+  const [user, setUser] = useState(null);
+  const [session, setSession] = useState(null);
   const [isLoading, setIsLoading] = useState(true); // true while checking session
 
   useEffect(() => {
