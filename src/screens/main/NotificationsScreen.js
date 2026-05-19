@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { FONTS, SPACING, RADIUS } from '../../constants/theme';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -44,13 +45,16 @@ const NOTIFICATIONS = [
   }
 ];
 
-export default function NotificationsScreen() {
+export default function NotificationsScreen({ navigation }) {
   const { COLORS } = useTheme();
   const [activeTab, setActiveTab] = useState('All');
 
   return (
-    <SafeAreaView style={[styles.safeArea, { backgroundColor: COLORS.background }]}>
+    <SafeAreaView style={[styles.safeArea, { backgroundColor: COLORS.background }]} edges={['top', 'left', 'right']}>
       <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={[styles.backBtn, { backgroundColor: COLORS.backgroundCard }]}>
+          <Text style={[styles.backIcon, { color: COLORS.textPrimary }]}>‹</Text>
+        </TouchableOpacity>
         <Text style={[styles.headerTitle, { color: COLORS.textPrimary }]}>Updates</Text>
       </View>
 
@@ -124,10 +128,18 @@ export default function NotificationsScreen() {
 const styles = StyleSheet.create({
   safeArea: { flex: 1 },
   header: {
+    flexDirection: 'row',
+    alignItems: 'center',
     paddingHorizontal: SPACING.xl,
     paddingTop: SPACING.lg,
     paddingBottom: SPACING.md,
   },
+  backBtn: {
+    width: 40, height: 40, borderRadius: 20,
+    alignItems: 'center', justifyContent: 'center',
+    marginRight: SPACING.md,
+  },
+  backIcon: { fontSize: 24, lineHeight: 28 },
   headerTitle: {
     fontFamily: FONTS.serif,
     fontSize: 28,

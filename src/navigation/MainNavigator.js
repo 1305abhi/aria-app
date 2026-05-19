@@ -16,6 +16,8 @@ import { SCREENS }  from '../constants/constants';
 import { FONTS } from '../constants/theme';
 import { useTheme } from '../context/ThemeContext';
 
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
+
 // ── Tab screens ──
 import HomeScreen          from '../screens/main/HomeScreen';
 import ChatScreen          from '../screens/main/ChatScreen';
@@ -31,12 +33,12 @@ const TAB_ICONS = {
   [SCREENS.HOME]:          { active: '⬡',  inactive: '⬡'  },
   [SCREENS.CHAT]:          { active: '◈',  inactive: '◈'  },
   [SCREENS.CALENDAR]:      { active: '▦',  inactive: '▦'  },
-  [SCREENS.NOTIFICATIONS]: { active: '◉',  inactive: '◉'  },
   [SCREENS.PROFILE]:       { active: '◑',  inactive: '◑'  },
 };
 
 export default function MainNavigator() {
   const { COLORS } = useTheme();
+  const insets = useSafeAreaInsets();
 
   return (
     <Tab.Navigator
@@ -48,9 +50,13 @@ export default function MainNavigator() {
           backgroundColor:  COLORS.backgroundCard,
           borderTopColor:   COLORS.border,
           borderTopWidth:   1,
-          paddingBottom:    8,
+          paddingBottom:    Math.max(insets.bottom, 8), // respects system gesture bar
           paddingTop:       8,
-          height:           64,
+          height:           64 + Math.max(insets.bottom, 0),
+          paddingHorizontal: 16, // keeps left/right padding consistent
+        },
+        tabBarItemStyle: {
+          flex: 1, // ensures equal gap between tabs
         },
         tabBarActiveTintColor:   COLORS.primary,
         tabBarInactiveTintColor: COLORS.textMuted,
@@ -73,8 +79,14 @@ export default function MainNavigator() {
       <Tab.Screen name={SCREENS.HOME}          component={HomeScreen}          options={{ tabBarLabel: 'Home' }} />
       <Tab.Screen name={SCREENS.CHAT}          component={ChatScreen}          options={{ tabBarLabel: 'Aria' }} />
       <Tab.Screen name={SCREENS.CALENDAR}      component={CalendarScreen}      options={{ tabBarLabel: 'Schedule' }} />
-      <Tab.Screen name={SCREENS.NOTIFICATIONS} component={NotificationsScreen} options={{ tabBarLabel: 'Updates' }} />
       <Tab.Screen name={SCREENS.PROFILE}       component={ProfileScreen}       options={{ tabBarLabel: 'Profile' }} />
+      
+      {/* Hidden screens accessible via navigation */}
+      <Tab.Screen 
+        name={SCREENS.NOTIFICATIONS} 
+        component={NotificationsScreen} 
+        options={{ tabBarButton: () => null, tabBarVisible: false }} 
+      />
       
       {/* Hidden screen accessible via Profile */}
       <Tab.Screen 
