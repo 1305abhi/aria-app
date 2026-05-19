@@ -69,7 +69,7 @@ export default function NotificationsScreen({ navigation }) {
                 onPress={() => setActiveTab(tab)}
                 style={[
                   styles.tabButton,
-                  { 
+                  {
                     backgroundColor: isActive ? COLORS.primary : COLORS.backgroundInput,
                     borderColor: COLORS.border
                   }
@@ -87,7 +87,7 @@ export default function NotificationsScreen({ navigation }) {
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
         {NOTIFICATIONS.map((notif) => (
           <View key={notif.id} style={[styles.card, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border }]}>
-            
+
             <View style={styles.cardHeader}>
               <View style={styles.cardTitleRow}>
                 <View style={[styles.iconCircle, { backgroundColor: COLORS.background, borderColor: COLORS.border }]}>

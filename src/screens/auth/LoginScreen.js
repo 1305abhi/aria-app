@@ -19,12 +19,12 @@ export default function LoginScreen() {
 
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: COLORS.background }]}>
-      <KeyboardAvoidingView 
+      <KeyboardAvoidingView
         style={styles.container}
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       >
         <View style={styles.content}>
-          
+
           {/* Logo Header */}
           <View style={styles.logoContainer}>
             <View style={[styles.logoCircle, { backgroundColor: COLORS.primary }]}>
@@ -43,14 +43,14 @@ export default function LoginScreen() {
 
           {/* Segmented Control */}
           <View style={[styles.segmentedControl, { backgroundColor: COLORS.backgroundInput, borderColor: COLORS.border }]}>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={[styles.segment, tab === 'Email' && [styles.segmentActive, { backgroundColor: COLORS.primary }]]}
               onPress={() => setTab('Email')}
             >
               <Text style={[styles.segmentText, { color: tab === 'Email' ? '#111' : COLORS.textSecondary }]}>Email</Text>
             </TouchableOpacity>
-            
-            <TouchableOpacity 
+
+            <TouchableOpacity
               style={[styles.segment, tab === 'Phone' && [styles.segmentActive, { backgroundColor: COLORS.primary }]]}
               onPress={() => setTab('Phone')}
             >
@@ -97,7 +97,7 @@ export default function LoginScreen() {
             <TouchableOpacity style={[styles.socialPill, { borderColor: COLORS.border, backgroundColor: COLORS.backgroundCard }]}>
               <Text style={[styles.socialPillText, { color: COLORS.textPrimary }]}>G  Google</Text>
             </TouchableOpacity>
-            
+
             <TouchableOpacity style={[styles.socialPill, { borderColor: COLORS.border, backgroundColor: COLORS.backgroundCard }]}>
               <Text style={[styles.socialPillText, { color: COLORS.textPrimary }]}>🍎  Apple</Text>
             </TouchableOpacity>
@@ -106,7 +106,7 @@ export default function LoginScreen() {
               <Text style={[styles.socialPillText, { color: COLORS.textPrimary }]}>🔑  SSO</Text>
             </TouchableOpacity>
           </View>
-          
+
         </View>
 
         <Text style={[styles.footerText, { color: COLORS.textMuted }]}>

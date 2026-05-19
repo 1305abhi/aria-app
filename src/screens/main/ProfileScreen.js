@@ -19,7 +19,7 @@ export default function ProfileScreen({ navigation }) {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: COLORS.background }]} edges={['top', 'left', 'right']}>
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-        
+
         <Text style={[styles.headerTitle, { color: COLORS.textPrimary }]}>Profile</Text>
 
         <View style={[styles.profileCard, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border }]}>
@@ -34,7 +34,7 @@ export default function ProfileScreen({ navigation }) {
           </View>
 
           <View style={styles.statsRow}>
-            {[{v:'12d', l:'STREAK'}, {v:'3.5h', l:'FOCUS'}, {v:'3', l:'GOALS'}].map((stat, i) => (
+            {[{ v: '12d', l: 'STREAK' }, { v: '3.5h', l: 'FOCUS' }, { v: '3', l: 'GOALS' }].map((stat, i) => (
               <View key={i} style={[styles.statBox, { backgroundColor: COLORS.background }]}>
                 <Text style={[styles.statValue, { color: COLORS.textPrimary }]}>{stat.v}</Text>
                 <Text style={[styles.statLabel, { color: COLORS.textSecondary }]}>{stat.l}</Text>
@@ -52,8 +52,8 @@ export default function ProfileScreen({ navigation }) {
             };
 
             return (
-              <TouchableOpacity 
-                key={index} 
+              <TouchableOpacity
+                key={index}
                 style={[styles.menuItem, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border }]}
                 disabled={item.isToggle} // the toggle handles interaction
                 onPress={handlePress}
@@ -67,10 +67,10 @@ export default function ProfileScreen({ navigation }) {
                     {item.isToggle ? (isDark ? 'Dark' : 'Light') : item.subtitle}
                   </Text>
                 </View>
-                
+
                 {item.isToggle ? (
-                  <Switch 
-                    value={isDark} 
+                  <Switch
+                    value={isDark}
                     onValueChange={toggleTheme}
                     trackColor={{ false: '#ccc', true: COLORS.primary }}
                   />
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
   avatarText: { fontSize: 24, fontFamily: FONTS.serif, color: '#111' },
   name: { fontFamily: FONTS.serif, fontSize: 24, marginBottom: 4 },
   email: { fontSize: 14 },
-  
+
   statsRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -153,7 +153,7 @@ const styles = StyleSheet.create({
   menuTitle: { fontSize: 15, fontWeight: 'bold', marginBottom: 2 },
   menuSubtitle: { fontSize: 12 },
   chevron: { fontSize: 20 },
-  
+
   signOutButton: {
     padding: SPACING.base,
     borderRadius: RADIUS.pill,

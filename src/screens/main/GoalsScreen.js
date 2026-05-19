@@ -17,10 +17,10 @@ export default function GoalsScreen({ navigation }) {
       </View>
 
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-        
+
         {/* Expanded Goal Card */}
         <View style={[styles.card, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border }]}>
-          
+
           <View style={styles.cardHeader}>
             <View>
               <Text style={[styles.cardTitle, { color: COLORS.textPrimary }]}>Stay consistently active</Text>
@@ -28,7 +28,7 @@ export default function GoalsScreen({ navigation }) {
             </View>
             <Text style={[styles.chevron, { color: COLORS.textSecondary }]}>^</Text>
           </View>
-          
+
           <View style={[styles.progressBarBg, { backgroundColor: COLORS.backgroundInput }]}>
             <View style={[styles.progressBarFill, { backgroundColor: COLORS.primary, width: '60%' }]} />
           </View>
@@ -114,10 +114,10 @@ const styles = StyleSheet.create({
   },
   backIcon: { fontSize: 24, lineHeight: 28 },
   headerTitle: { fontFamily: FONTS.serif, fontSize: 24 },
-  
+
   container: { flex: 1 },
   content: { padding: SPACING.xl },
-  
+
   card: {
     padding: SPACING.lg,
     borderRadius: RADIUS.xl,
@@ -133,23 +133,23 @@ const styles = StyleSheet.create({
   cardTitle: { fontFamily: FONTS.serif, fontSize: 20, marginBottom: 4 },
   cardSubtitle: { fontSize: 12 },
   chevron: { fontSize: 16 },
-  
+
   progressBarBg: { height: 6, borderRadius: 3, width: '100%', overflow: 'hidden' },
   progressBarFill: { height: 6, borderRadius: 3 },
   divider: { height: 1, backgroundColor: '#333', marginVertical: SPACING.xl },
-  
+
   routineHeader: { flexDirection: 'row', justifyContent: 'space-between', marginBottom: SPACING.lg },
   routineTitle: { fontWeight: 'bold', fontSize: 15, marginBottom: 4 },
   routineSubtitle: { fontSize: 12 },
   routineTime: { fontSize: 12 },
-  
+
   checkboxList: { gap: SPACING.md, marginBottom: SPACING.xl },
   checkboxItem: { flexDirection: 'row', alignItems: 'center' },
   checkboxChecked: { width: 24, height: 24, borderRadius: 12, alignItems: 'center', justifyContent: 'center', marginRight: SPACING.md },
   checkboxEmpty: { width: 24, height: 24, borderRadius: 12, borderWidth: 1, marginRight: SPACING.md },
   checkIcon: { color: '#111', fontSize: 12, fontWeight: 'bold' },
   checkText: { fontSize: 14 },
-  
+
   whyBox: { padding: SPACING.md, borderRadius: RADIUS.lg },
   whyTitle: { fontSize: 10, fontWeight: 'bold', marginBottom: SPACING.sm, letterSpacing: 1 },
   whyText: { fontSize: 14, lineHeight: 20 },

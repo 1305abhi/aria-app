@@ -20,7 +20,7 @@ export default function HomeScreen({ navigation }) {
   return (
     <SafeAreaView style={[styles.safeArea, { backgroundColor: COLORS.background }]} edges={['top', 'left', 'right']}>
       <ScrollView style={styles.container} contentContainerStyle={styles.content}>
-        
+
         {/* Header */}
         <View style={styles.header}>
           <View>
@@ -28,7 +28,7 @@ export default function HomeScreen({ navigation }) {
             <Text style={[styles.name, { color: COLORS.textPrimary }]}>Alex</Text>
           </View>
           <View style={styles.headerIcons}>
-            <TouchableOpacity 
+            <TouchableOpacity
               style={[styles.profileCircle, { backgroundColor: COLORS.backgroundCard, borderColor: COLORS.border, borderWidth: 1 }]}
               onPress={() => navigation.navigate(SCREENS.NOTIFICATIONS)}
             >
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
   iconCircle: { width: 40, height: 40, borderRadius: 20 },
   profileCircle: { width: 40, height: 40, borderRadius: 20, alignItems: 'center', justifyContent: 'center' },
   profileText: { color: '#111', fontWeight: 'bold' },
-  
+
   summaryCard: {
     padding: SPACING.lg,
     borderRadius: RADIUS.xl,
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
   cardTitle: { fontFamily: FONTS.serif, fontSize: 24, lineHeight: 30, marginBottom: SPACING.xl },
   cardLink: { flexDirection: 'row' },
   cardLinkText: { fontSize: 14 },
-  
+
   statsRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
   },
   statValue: { fontFamily: FONTS.serif, fontSize: 20, fontWeight: 'bold' },
   statLabel: { fontSize: 9, textTransform: 'uppercase', marginTop: 2 },
-  
+
   scheduleHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -147,7 +147,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: { fontFamily: FONTS.serif, fontSize: 24 },
   sectionSubtitle: { fontSize: 14 },
-  
+
   timelineRow: {
     flexDirection: 'row',
     marginBottom: SPACING.md,

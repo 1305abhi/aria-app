@@ -29,10 +29,10 @@ const Tab = createBottomTabNavigator();
 
 // ─── Tab icon map using Ionicons ───
 const TAB_ICONS = {
-  [SCREENS.HOME]:     { active: 'home',       inactive: 'home-outline' },
-  [SCREENS.CHAT]:     { active: 'sparkles',   inactive: 'sparkles-outline' },
-  [SCREENS.CALENDAR]: { active: 'calendar',   inactive: 'calendar-outline' },
-  [SCREENS.PROFILE]:  { active: 'person',     inactive: 'person-outline' },
+  [SCREENS.HOME]: { active: 'home', inactive: 'home-outline' },
+  [SCREENS.CHAT]: { active: 'sparkles', inactive: 'sparkles-outline' },
+  [SCREENS.CALENDAR]: { active: 'calendar', inactive: 'calendar-outline' },
+  [SCREENS.PROFILE]: { active: 'person', inactive: 'person-outline' },
 };
 
 export default function MainNavigator() {
@@ -68,10 +68,10 @@ export default function MainNavigator() {
         tabBarIcon: ({ focused, color }) => {
           const icon = TAB_ICONS[route.name] || { active: 'help', inactive: 'help-outline' };
           return (
-            <Ionicons 
-              name={focused ? icon.active : icon.inactive} 
-              size={24} 
-              color={color} 
+            <Ionicons
+              name={focused ? icon.active : icon.inactive}
+              size={24}
+              color={color}
             />
           );
         },

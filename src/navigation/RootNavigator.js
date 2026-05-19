@@ -10,14 +10,14 @@
  * ─────────────────────────────────────────────
  */
 
-import React                          from 'react';
-import { NavigationContainer }        from '@react-navigation/native';
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { ActivityIndicator, View }    from 'react-native';
+import { ActivityIndicator, View } from 'react-native';
 
-import { useAuth }    from '../context/AuthContext';
-import { COLORS }     from '../constants/theme';
-import { SCREENS }    from '../constants/constants';
+import { useAuth } from '../context/AuthContext';
+import { COLORS } from '../constants/theme';
+import { SCREENS } from '../constants/constants';
 
 // ── Navigator instances ──
 import AuthNavigator from './AuthNavigator';
@@ -25,7 +25,7 @@ import MainNavigator from './MainNavigator';
 
 // ── Main App Screens (Outside Tabs) ──
 import NotificationsScreen from '../screens/main/NotificationsScreen';
-import GoalsScreen         from '../screens/main/GoalsScreen';
+import GoalsScreen from '../screens/main/GoalsScreen';
 
 const Stack = createNativeStackNavigator();
 
